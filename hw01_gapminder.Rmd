@@ -1,0 +1,30 @@
+---
+title: "STAT 545 Assignment 1"
+author: "Lucy Bellemare"
+date: "September 11, 2018"
+output: github_document
+---
+
+```{r}
+library(gapminder)
+```
+ 
+Using the Gapminder dataset, let's explore a little! First let's consider how average gdp per capita has changed across continents from 1952 to 2007:
+
+```{r}
+test <- aggregate(gapminder$gdpPercap, by=list(gapminder$continent, gapminder$year), FUN=mean)
+colnames(test) <- c("Continent", "Year", "GDPPerCap")
+test2 <- test %>% spread(Continent, GDPPerCap)
+test2
+```
+
+From this we can see that the average GDP per capita for each continent has steadily increased from 1952 to 2007. Let's see if the same trend can be observed in average life expectancy, over the same time period:
+
+```{r}
+test3 <- aggregate(gapminder$lifeExp, by=list(gapminder$continent, gapminder$year), FUN=mean)
+colnames(test3) <- c("Continent", "Year", "LifeExp")
+test4 <- test3 %>% spread(Continent, LifeExp)
+test4
+```
+
+Yes, the same trend is observed when considering average life expectancy for each continent. 
