@@ -7,6 +7,7 @@ output: github_document
 
 ```{r}
 library(gapminder)
+library(tidyr)
 ```
  
 Using the Gapminder dataset, let's explore a little! First let's consider how average gdp per capita has changed across continents from 1952 to 2007:
